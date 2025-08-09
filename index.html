@@ -6,8 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>🎂 Happy Birthday!</title>
   <meta name="description" content="남자친구 생일 축하 페이지" />
-  <meta property="og:title" content="Happy Birthday" />
-  <meta property="og:description" content="사랑을 담은 작은 웹페이지" />
+  <meta property="og:title" content="Happy Birthday JH!" />
+  <meta property="og:description" content="재롱쓰 Birthday🎁" />
   <meta name="theme-color" content="#0f1220" />
 
   <style>
@@ -58,9 +58,7 @@
         radial-gradient(900px 600px at 100% 0%, rgba(255, 209, 102, .22), transparent 60%),
         linear-gradient(180deg, #0b0f14 0%, #0f1724 50%, #0b0f14 100%);
       background-repeat: no-repeat;
-      /* 반복 방지 */
       will-change: transform;
-      /* 스크롤 성능 힌트 */
     }
 
     .container {
@@ -303,12 +301,10 @@
           💛</h1>
         <p class="sub">생일 축하해! 오늘만큼은 세상에서 제일 빛나줘 ✨</p>
         <div class="cta">
-          <!-- <button class="btn primary" id="btnMusic">배경음 켜기</button> -->
-          <!-- <button class="btn ghost" id="btnConfetti">한번 더 뿌리기🎊</button> -->
+
         </div>
       </div>
       <figure class="hero-photo">
-        <!-- 메인 사진: 첫 번째 사진 파일명으로 교체하세요 -->
         <img src="./images/1.jpg" alt="주인공 사진" />
       </figure>
     </header>
@@ -332,11 +328,6 @@
 
     <footer>ⓒ 2025 Birthday Page. Made with love.</footer>
   </div>
-
-  <audio id="music" preload="none">
-    <!-- 배경음 넣고 싶다면 mp3 파일을 같은 폴더에 두고 파일명을 아래로 바꾸세요 -->
-    <source src="./bgm.mp3" type="audio/mpeg" />
-  </audio>
 
   <script>
     // Simple confetti
@@ -373,11 +364,6 @@
       b.style.setProperty('--bcolor', palette[Math.floor(Math.random() * palette.length)]);
       balloonWrap.appendChild(b);
     }
-
-    // Music toggle
-    const music = document.getElementById('music');
-    const btnMusic = document.getElementById('btnMusic');
-    let playing = false;
   </script>
 </body>
 
