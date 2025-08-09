@@ -1,0 +1,384 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>🎂 Happy Birthday!</title>
+  <meta name="description" content="남자친구 생일 축하 페이지" />
+  <meta property="og:title" content="Happy Birthday" />
+  <meta property="og:description" content="사랑을 담은 작은 웹페이지" />
+  <meta name="theme-color" content="#0f1220" />
+
+  <style>
+    :root {
+      --bg: #0b0f14;
+      --bg2: #121a27;
+      --card: #0f1724;
+      --text: #e7ecf3;
+      --muted: #a5b0bf;
+      --accent: #7c3aed;
+      --primary: #ffd166;
+    }
+
+    * {
+      box-sizing: border-box
+    }
+
+    html,
+    body {
+      height: 100%
+    }
+
+    html {
+      background: #0b0f14;
+    }
+
+    /* 안전한 기본색 */
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans KR", sans-serif;
+      color: var(--text);
+      overflow-x: hidden;
+      background: none;
+      /* ← 기존 body 배경 제거 */
+      position: relative;
+      min-height: 100%;
+    }
+
+    /* 스크롤해도 고정되는 단일 배경 레이어 */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      background:
+        radial-gradient(1200px 700px at 0% -10%, rgba(124, 58, 237, .25), transparent 60%),
+        radial-gradient(900px 600px at 100% 0%, rgba(255, 209, 102, .22), transparent 60%),
+        linear-gradient(180deg, #0b0f14 0%, #0f1724 50%, #0b0f14 100%);
+      background-repeat: no-repeat;
+      /* 반복 방지 */
+      will-change: transform;
+      /* 스크롤 성능 힌트 */
+    }
+
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 24px
+    }
+
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, .06);
+      border: 1px solid rgba(255, 255, 255, .08);
+      color: #d1d9e6;
+      font-size: 14px
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 32px;
+      align-items: center;
+      padding: 84px 0
+    }
+
+    @media (max-width:900px) {
+      .hero {
+        grid-template-columns: 1fr;
+        padding-top: 48px
+      }
+    }
+
+    h1 {
+      margin: 10px 0 8px;
+      font-size: clamp(32px, 6vw, 56px);
+      letter-spacing: -.02em;
+      line-height: 1.05
+    }
+
+    .sub {
+      color: var(--muted);
+      font-size: clamp(15px, 2.4vw, 18px)
+    }
+
+    .cta {
+      margin-top: 26px;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap
+    }
+
+    .btn {
+      appearance: none;
+      border: 0;
+      cursor: pointer;
+      padding: 12px 16px;
+      border-radius: 14px;
+      font-weight: 700;
+      transition: transform .12s ease, box-shadow .25s ease
+    }
+
+    .btn.primary {
+      background: linear-gradient(135deg, var(--primary), #ff8fab);
+      color: #2b2b2b;
+      box-shadow: 0 16px 36px rgba(255, 209, 102, .25)
+    }
+
+    .btn.ghost {
+      background: rgba(255, 255, 255, .06);
+      color: var(--text);
+      border: 1px solid rgba(255, 255, 255, .08)
+    }
+
+    .btn:hover {
+      transform: translateY(-2px)
+    }
+
+    .hero-photo {
+      position: relative;
+      aspect-ratio: 4/5;
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow: 0 30px 60px rgba(0, 0, 0, .45);
+      transform: rotate(-1.5deg)
+    }
+
+    .hero-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: saturate(1.06) contrast(1.02)
+    }
+
+    .hero-photo::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(120% 100% at 70% 10%, rgba(124, 58, 237, .25), transparent 45%)
+    }
+
+    section {
+      padding: 56px 0
+    }
+
+    section h2 {
+      margin: 0 0 10px;
+      font-size: clamp(24px, 4vw, 36px)
+    }
+
+    .lead {
+      color: var(--muted)
+    }
+
+    /* gallery */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 16px
+    }
+
+    .card {
+      background: #0e1622;
+      border: 1px solid rgba(255, 255, 255, .06);
+      border-radius: 20px;
+      overflow: hidden;
+      position: relative;
+      transition: transform .2s ease, box-shadow .25s ease
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, .35)
+    }
+
+    .card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block
+    }
+
+    .span-6 {
+      grid-column: span 6
+    }
+
+    .span-4 {
+      grid-column: span 4
+    }
+
+    .span-12 {
+      grid-column: span 12
+    }
+
+    @media (max-width:900px) {
+
+      .span-6,
+      .span-4 {
+        grid-column: span 12
+      }
+    }
+
+    /* message */
+    .note {
+      background: linear-gradient(180deg, rgba(255, 255, 255, .04), rgba(255, 255, 255, .02));
+      border: 1px solid rgba(255, 255, 255, .08);
+      border-radius: 20px;
+      padding: 22px
+    }
+
+    .note p {
+      margin: 0 0 10px
+    }
+
+    /* footer */
+    footer {
+      padding: 40px 0 60px;
+      color: var(--muted);
+      text-align: center
+    }
+
+    /* Floating balloons */
+    .balloons {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 0
+    }
+
+    .balloon {
+      position: absolute;
+      bottom: -120px;
+      width: 18px;
+      height: 22px;
+      background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, .7), rgba(255, 255, 255, .1) 60%), var(--bcolor);
+      border-radius: 50% 50% 46% 54%/58% 54% 46% 42%;
+      animation: float var(--dur) linear infinite;
+      opacity: .8;
+      filter: blur(.2px)
+    }
+
+    @keyframes float {
+      to {
+        transform: translateY(-120vh) translateX(var(-- drift)) rotate(6deg);
+        opacity: 1
+      }
+    }
+
+    /* Confetti */
+    canvas#confetti {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1
+    }
+
+    /* elevate content */
+    .stack {
+      position: relative;
+      z-index: 2
+    }
+  </style>
+</head>
+
+<body>
+  <div class="balloons" aria-hidden="true"></div>
+  <canvas id="confetti"></canvas>
+
+  <div class="container stack">
+    <header class="hero">
+      <div>
+        <span class="badge">🎉 재혁쓰 Birthday!</span>
+        <h1>Happy Birthday <span
+            style="background:linear-gradient(90deg,var(--primary),#ff8fab); -webkit-background-clip:text; background-clip:text; color:transparent">재혁쓰</span>
+          💛</h1>
+        <p class="sub">생일 축하해! 오늘만큼은 세상에서 제일 빛나줘 ✨</p>
+        <div class="cta">
+          <!-- <button class="btn primary" id="btnMusic">배경음 켜기</button> -->
+          <!-- <button class="btn ghost" id="btnConfetti">한번 더 뿌리기🎊</button> -->
+        </div>
+      </div>
+      <figure class="hero-photo">
+        <!-- 메인 사진: 첫 번째 사진 파일명으로 교체하세요 -->
+        <img src="./images/1.jpg" alt="주인공 사진" />
+      </figure>
+    </header>
+
+    <section>
+      <h2>우리의 순간들</h2>
+      <div class="gallery">
+        <div class="card span-6"><img src="./images/3.jpg" alt="사진 2"></div>
+        <div class="card span-6"><img src="./images/5.jpg" alt="사진 3"></div>
+        <div class="card span-6"><img src="./images/2.jpg" alt="사진 1"></div>
+        <div class="card span-6"><img src="./images/4.jpg" alt="사진 3"></div>
+      </div>
+    </section>
+
+    <section>
+      <div class="note">
+        <p>맛있는 거 먹고, 사진 많이 찍고, 올 한 해도 건강하고 행복하자.♥</p>
+        <p style="opacity:.8">— From. 베프 1호</p>
+      </div>
+    </section>
+
+    <footer>ⓒ 2025 Birthday Page. Made with love.</footer>
+  </div>
+
+  <audio id="music" preload="none">
+    <!-- 배경음 넣고 싶다면 mp3 파일을 같은 폴더에 두고 파일명을 아래로 바꾸세요 -->
+    <source src="./bgm.mp3" type="audio/mpeg" />
+  </audio>
+
+  <script>
+    // Simple confetti
+    const canvas = document.getElementById('confetti');
+    const ctx = canvas.getContext('2d');
+    let W, H, pieces = [];
+    function resize() { W = canvas.width = innerWidth; H = canvas.height = innerHeight }
+    addEventListener('resize', resize); resize();
+    const colors = ['#ffd166', '#7c3aed', '#60a5fa', '#f472b6', '#34d399', '#facc15'];
+    function spawn(count = 120) {
+      for (let i = 0; i < count; i++) {
+        pieces.push({ x: Math.random() * W, y: -20 - Math.random() * H, r: 3 + Math.random() * 5, c: colors[Math.floor(Math.random() * colors.length)], v: 1 + Math.random() * 3, a: Math.random() * Math.PI });
+      }
+    }
+    function draw() {
+      ctx.clearRect(0, 0, W, H);
+      pieces.forEach(p => {
+        p.y += p.v; p.x += Math.sin(p.a += 0.05); if (p.y > H + 30) p.y = -20;
+        ctx.fillStyle = p.c; ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2); ctx.fill();
+      });
+      requestAnimationFrame(draw);
+    }
+    spawn(160); draw();
+    document.getElementById('btnConfetti').onclick = () => spawn(120);
+
+    // Balloons
+    const balloonWrap = document.querySelector('.balloons');
+    const palette = ['#f87171', '#fbbf24', '#34d399', '#60a5fa', '#a78bfa', '#f472b6'];
+    for (let i = 0; i < 26; i++) {
+      const b = document.createElement('div'); b.className = 'balloon';
+      const s = 14 + Math.random() * 18; b.style.width = s + 'px'; b.style.height = s * 1.2 + 'px';
+      b.style.left = Math.random() * 100 + '%'; b.style.setProperty('--dur', (18 + Math.random() * 18) + 's');
+      b.style.setProperty('--drift', (Math.random() * 60 - 30) + 'px');
+      b.style.setProperty('--bcolor', palette[Math.floor(Math.random() * palette.length)]);
+      balloonWrap.appendChild(b);
+    }
+
+    // Music toggle
+    const music = document.getElementById('music');
+    const btnMusic = document.getElementById('btnMusic');
+    let playing = false;
+  </script>
+</body>
+
+</html>
